@@ -28,6 +28,41 @@
             　ログアウト
             <% end %>
           </li>
+          <!--以下★マーク部分は機能実装後削除してください-->
+          <li>
+            <%= link_to new_admin_item_path,class: 'nav-link text-light' do %>
+            　★商品追加★
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_genres_path,class: 'nav-link text-light' do %>
+            　★ジャンル一覧・追加★
+            <% end %>
+          </li>
+          <% elsif admin_signed_in? %>
+          <li>
+            <%= link_to admin_items_path,class: 'nav-link text-light' do %>
+            　商品一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_customers_path,class: 'nav-link text-light' do %>
+            　会員一覧
+            <% end %>
+          </li>
+          <li>
+            
+          </li>
+          <li>
+            <%= link_to admin_genres_path,class: 'nav-link text-light' do %>
+            ジャンル一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
+            　ログアウト
+            <% end %>
+          </li>
           <% else %>
           <li>
             <%= link_to about_path,class: 'nav-link text-light' do %>
