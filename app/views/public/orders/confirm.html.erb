@@ -1,0 +1,49 @@
+<h2>注文情報確認</h2>
+<table>
+  <tr>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>数量</th>
+    <th>小計</th>
+  </tr>
+  <% @cart_items.each do |cart| %>
+  <tr>
+    <td><画像挿入><%= cart.item.name %></td>
+    <td><%= cart.item.price * 1.1 %></td>
+    <td><%= cart.amount %></td>
+    <td><%= cart.item.price*1.1 *cart.amount %></td>
+    <% @goke = cart.item.price*1.1 *cart.amount + @goke %>
+  </tr>
+  <% end %>
+</table>
+
+<table>
+  <tr>
+    <th>送料</th>
+    <td><%= 800 %></td>
+  </tr>
+  <tr>
+    <th>商品合計</th>
+    <td><%= @goke %></td>
+  </tr>
+  <tr>
+    <th>請求金額</th>
+    <td><%= 800 + @goke %></td>
+  </tr>
+  
+</table>
+
+<table>
+  <tr>
+    <th>支払い方法</th>
+    <td><%= @order.payment_method %></td>
+  </tr>
+  <tr>
+    <th>お届け先</th>
+    <td><%= @order.address %></td>
+  </tr>
+</table>
+
+  <%= form_with model: @order, url: orders_path, local: true (method: post) do |f| %>
+    <%= f.submit "注文を確定する" %>
+  <% end %>

@@ -11,19 +11,19 @@
    <div class="row ml-3">
         <label class="col-lg-3">名前</label>
         <div class="col-lg-3">
-          (姓)<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          (姓)<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" , placeholder: "山田" %>
         </div>
         <div class="col-lg-3">
-          (名)<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          (名)<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" , placeholder: "太郎"%>
         </div>
    </div><br />
    <div class="row ml-3">
         <label class="col-lg-3">フリガナ</label>
         <div class="col-lg-3">
-          (セイ)<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          (セイ)<%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" , placeholder: "ヤマダ" %>
         </div>
         <div class="col-lg-3">
-          (メイ)<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          (メイ)<%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" , placeholder: "タロウ"%>
         </div>
    </div><br />
 　 <div class="row ml-3">
@@ -35,19 +35,19 @@
     <div class="row ml-3">
         <label class="col-lg-3">郵便番号(ハイフンなし)</label>
         <div class="col-lg-3">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code", placeholder: "0000000" %>
         </div>
     </div><br />
     <div class="row ml-3">
         <label class="col-lg-3">住所</label>
         <div class="col-lg-3">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.text_field :address, autofocus: true, autocomplete: "address" , placeholder: "東京都渋谷区代々木神園町0-0" %>
         </div>
     </div><br />
     <div class="row ml-3">
         <label class="col-lg-3">電話番号(ハイフンなし)</label>
         <div class="col-lg-3">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" , placeholder: "00000000000" %>
         </div>
     </div><br />
     <div class="row ml-3">
