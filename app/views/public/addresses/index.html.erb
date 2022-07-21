@@ -1,1 +1,61 @@
-<h1>配送先登録/一覧画面</h1>
+<div class='container px-5 px-sm-0'>
+ <div class='row'>
+  <!--左-->
+  <div class='col-md-6'>
+  <h4>配送先登録/一覧</h4>
+  <br>
+  <br>
+  <!--ジャンル登録-->
+  <div class="form-group">
+  <table>
+   <tbody>
+    <tr>
+      <%= form_with model: @address, local:true, method: :post  do |f| %>
+      <td>郵便番号</td>
+      <td><%= f.text_field :delivery_post_code, class: 'form-control addrss_delivery_post_code' %></td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td><%= f.text_field :delivery_address, class: 'form-control addrss_delivery_address' %></td>
+    </tr>
+    <tr>
+      <td>宛名</td>
+      <td><%= f.text_field :delivery_address_name, class: 'form-control addrss_delivery_address_name' %></td>
+      <td><%= f.submit "新規登録",class: "btn btn-success" %></td>
+    <% end %>
+    </tr>
+   </tbody>
+  </table>
+
+  <br>
+  <br>
+  <!--ジャンル一覧-->
+  <table class='table table-hover table-inverse'>
+    <thead>
+      <tr>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th colspan="5"></th>
+      </tr>
+    </thead>
+    <tbody>
+
+    <% @addresses.each do |address| %>
+    <tr>
+      <td><%= address.delivery_post_code %></td>
+      <td><%= address.delivery_address %></td>
+      <td><%= address.delivery_address_name %></td>
+      <!--<td>%= link_to '編集',edit_address_path(addrss.id), class: "btn btn-sm btn-success"%></td>-->
+    </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+  </div>
+  </div>
+  <!--右（空白）-->
+  <div class='col-md-5 offset-md-1'>
+  </div>
+ </div>
+</div>
