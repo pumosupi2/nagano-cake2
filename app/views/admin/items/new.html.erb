@@ -3,15 +3,13 @@
 <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
   商品画像
   <%= f.file_field :image, accept: 'image/*' %></br>
-  商品名
+  商品名<br>
   <%= f.text_field :name %></br>
-  商品説明
+  商品説明<br>
   <%= f.text_area :introduction %></br>
-  ジャンル選択
-  
-  税抜価格
-  
-  販売ステータス
-  
+  税抜価格<br>
+
+  販売ステータス<br>
+
   <%= f.submit '新規登録' %>
 <% end %>
