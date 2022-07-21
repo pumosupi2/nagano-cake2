@@ -1,1 +1,23 @@
 <h1>管理者側の商品一覧</h1>
+<h6>商品新規登録</h6>
+<table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+</table>
+<tbody>
+  <%= @items.each do |item| %>
+    <tr>
+      <td>
+        <%= item.name %>
+      </td>
+    </tr>
+    
+  <% end %>
+</tbody>
