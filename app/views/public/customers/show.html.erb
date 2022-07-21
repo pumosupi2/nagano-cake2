@@ -1,1 +1,38 @@
-<h1>顧客のマイページ</h1>
+<div class="container">
+  <div class="row">
+    <h2>登録情報</h2>
+  </div>
+  
+    <%= link_to "編集する",  customers_information_edit_path %>
+    <div>
+      <label>氏名</label>
+      <div><%= @customer.full_name %></div>
+    </div>
+    <div>
+      <label>カナ</label>
+      <div><%= @customer.full_name_kana %></div>
+    </div>
+    <div>
+      <label>郵便番号</label>
+      <div><%= @customer.post_code %></div>
+    </div>
+    <div>
+      <label>住所</label>
+      <div><%= @customer.address %></div>
+    </div>
+    <div>
+      <label>電話番号</label>
+      <div><%= @customer.telephone_number %></div>
+    </div>
+    <div>
+      <label>メールアドレス</label>
+      <div><%= @customer.email %></div>
+    </div>
+    <div>
+      <h2>配送先</h2>
+      <%= link_to "一覧を見る",  addresses_path %>
+    </div>
+    <div>
+      <h2>注文履歴</h2>
+    </div>
+</div>
