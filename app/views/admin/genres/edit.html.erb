@@ -6,18 +6,11 @@
       <br>
       <br>
         <div class="form-group">
-          <!--<table>-->
-          <!--tableタグを使うと反応しない-->
-            <tbody>
-            <%= form_with model: @genre,local:true, url: admin_genre_path, method: :patch do |f| %>
-            <tr>
-            <td>ジャンル名</td>
-            <td><%= f.text_field :name, class: 'form-control genre_name' %></td>
-            <td><%= f.submit "変更を保存",class: "btn btn-success" %></td>
-            </tr>
-            <% end %>
-            </tbody>
-          <!--</table>-->
+        <p>ジャンル</p>
+        <%= form_with model: @genre,local:true, url: admin_genre_path, method: :patch do |f| %>
+        <%= f.text_field :name, class: 'form-control genre_name' %>
+        <%= f.submit "変更を保存",class: "btn btn-success" %>
+        <% end %>
         </div>
     </div>
     <!--右（空白）-->
