@@ -5,31 +5,23 @@
   <h4>配送先登録/一覧</h4>
   <br>
   <br>
-  <!--ジャンル登録-->
-  <div class="form-group">
-  <table>
-   <tbody>
-    <tr>
-      <%= form_with model: @address, local:true, method: :post  do |f| %>
-      <td>郵便番号</td>
-      <td><%= f.text_field :delivery_post_code, class: 'form-control addrss_delivery_post_code' %></td>
-    </tr>
-    <tr>
-      <td>住所</td>
-      <td><%= f.text_field :delivery_address, class: 'form-control addrss_delivery_address' %></td>
-    </tr>
-    <tr>
-      <td>宛名</td>
-      <td><%= f.text_field :delivery_address_name, class: 'form-control addrss_delivery_address_name' %></td>
-      <td><%= f.submit "新規登録",class: "btn btn-success" %></td>
-    <% end %>
-    </tr>
-   </tbody>
-  </table>
 
+  <div class="form-group">
+  <%= form_with model: @address, url: addresses_path, local:true, method: :post  do |f| %>
+
+    <p>郵便番号</p>
+    <%= f.text_field :delivery_post_code, class: 'form-control address_delivery_post_code' %>
+    <p>住所</p>
+    <%= f.text_field :delivery_address, class: 'form-control address_delivery_address' %>
+　　<p>宛名</p>
+    <%= f.text_field :delivery_address_name, class: 'form-control address_delivery_address_name' %>
+    <br>
+    <%= f.submit "新規登録",class: "btn btn-success" %>
+
+　<% end %>
   <br>
   <br>
-  <!--ジャンル一覧-->
+
   <table class='table table-hover table-inverse'>
     <thead>
       <tr>
@@ -46,7 +38,8 @@
       <td><%= address.delivery_post_code %></td>
       <td><%= address.delivery_address %></td>
       <td><%= address.delivery_address_name %></td>
-      <!--<td>%= link_to '編集',edit_address_path(addrss.id), class: "btn btn-sm btn-success"%></td>-->
+      <td><%= link_to '編集',edit_address_path(address.id), class: "btn btn-sm btn-success" %></td>
+      <td><%= link_to '削除',address_path(address.id), method: :delete,class: "btn btn-sm btn-danger" %></td>
     </tr>
     <% end %>
 
