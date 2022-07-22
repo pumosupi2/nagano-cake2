@@ -1,0 +1,66 @@
+<h2>注文履歴詳細</h2>
+<%= form_with model: @order, local: true do |f| %>
+<table style:"border:none;">
+  <tr style:"border:none;">
+    <th style:"border:none;">購入者</th>
+    <td style:"border:none;">         </td>
+  </tr>
+  <tr style:"border:none;">
+    <th style:"border:none;">注文日</th>
+    <td style:"border:none;"><%= order.created_at %></td>
+  </tr>
+  <tr style:"border:none;">
+    <th style:"border:none;">配送先</th>
+    <td style:"border:none;">          </td>
+  </tr>
+  <tr style:"border:none;">
+    <th style:"border:none;">支払い方法</th>
+    <td style:"border:none;"><%= order.payment_method %></td>
+  </tr>
+  <tr style:"border:none;">
+    <th style:"border:none;">注文ステータス</th>
+    <td style:"border:none;">            </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>商品名</th>
+    <th>単価（税込）</th>
+    <th>数量</th>
+    <th>小計</th>
+    <th>製作ステータス</th>
+  </tr>
+
+  <tr>
+    <td>      </td>
+    <td>      </td>
+    <td>      </td>
+    <td>      </td>
+    <td>      </td>
+  </tr>
+
+</table>
+
+<table style:"border:none;">
+  <tr style:"border:none;">
+    <th style:"border:none;">商品合計</th>
+    <td style:"border:none;"><%= order.total_payment %></td>
+  </tr>
+  <tr style:"border:none;">
+    <th style:"border:none;">       </th>
+    <td style:"border:none;">       </td>
+  </tr>
+  <tr style:"border:none;">
+    <th style:"border:none;">       </th>
+    <td style:"border:none;">       </td>
+  </tr>
+  <tr style:"border:none;">
+    <th style:"border:none;">       </th>
+    <td style:"border:none;">       </td>
+  </tr>
+  <tr style:"border:none;">
+    <th style:"border:none;">       </th>
+    <td style:"border:none;">       </td>
+  </tr>
+</table>
