@@ -1,1 +1,23 @@
 <h1>注文履歴画面</h1>
+
+<h3>注文履歴一覧</h3>
+<table>
+  <tr>
+    <th>注文日</th>
+    <th>配送先</th>
+    <th>注文商品</th>
+    <th>支払い金額</th>
+    <th>ステータス</th>
+    <th>注文詳細</th>
+  </tr>
+  <% @orders.each do |order| %>
+  <tr>
+    <td><%= order.created_at %></td>
+    <td><%= order.address %></td>
+    <td><%= order.order_history.item.name %></td>
+    <td><%= order.total_payment "円" %></td>
+    <td><%= orders.status %></td>
+    <td><%= link_to order_path(order.user) %></td>
+  </tr>
+  <% end %>
+</table>

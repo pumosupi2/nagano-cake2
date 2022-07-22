@@ -9,10 +9,10 @@
   <% @cart_items.each do |cart| %>
   <tr>
     <td><画像挿入><%= cart.item.name %></td>
-    <td><%= cart.item.price * 1.1 %></td>
+    <td><%= ((cart.item.price * 1.1).round(2)).ceil.to_s(:delimited) %></td>
     <td><%= cart.amount %></td>
-    <td><%= cart.item.price*1.1 *cart.amount %></td>
-    <% @goke = cart.item.price*1.1 *cart.amount + @goke %>
+    <td><%= cart.item.price *1.1 * cart.amount %></td>
+    <% @goke = cart.item.price *1.1 * cart.amount + @goke %>
   </tr>
   <% end %>
 </table>
@@ -33,17 +33,24 @@
   
 </table>
 
-<table>
-  <tr>
-    <th>支払い方法</th>
-    <td><%= @order.payment_method %></td>
+<table style: "border:none;">
+  <tr style: "border:none;">
+    <th style: "border:none;">支払い方法</th>
+    <td style: "border:none;"><%= @order.payment_method %></td>
   </tr>
-  <tr>
-    <th>お届け先</th>
-    <td><%= @order.address %></td>
+  <tr style: "border:none;">
+    <th style: "border:none;">お届け先</th>
+    <td style: "border:none;"><%= @order.address %></td>
   </tr>
 </table>
 
-  <%= form_with model: @order, url: orders_path, local: true (method: post) do |f| %>
+  <%= form_with model: @order, url: orders_path, local: true do |f| %>
+  <%= f.hidden_field :customer_id,:value => current_customer.id %>
+  <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+  <%= f.hidden_field :shipping_cost,:value => 800 %>
+  <%= f.hidden_field :total_payment,:value => @goke %>
+  <%= f.hidden_field :address,:value => @order.address %>
+  <%= f.hidden_field :postal_code,:value => @order.postal_code %>
+  <%= f.hidden_field :name,:value => @order.name %>
     <%= f.submit "注文を確定する" %>
   <% end %>
