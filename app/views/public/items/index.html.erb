@@ -1,8 +1,17 @@
+ジャンル検索
+<% @genres.each do |genre| %>
+  <%= genre.name %>
+<% end %>
 <h1>商品一覧</h1>
 全<%= @items.count %>件</br>
 <% @items.each do |item| %>
   <%= link_to item_path(item.id) do %>
     <%= image_tag item.image, size: "200x150" %>
+  <% end %>
+  <% if item.is_active %>
+    販売中
+  <% else %>
+    売切れ
   <% end %>
 <!--商品名-->
   <%= item.name %>
