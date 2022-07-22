@@ -6,7 +6,7 @@
 ジャンル
 ステータス</br>
 <% @items.each do |item| %>
-  <%= item.genre_id %>
+  <%= item.id %>
   <%= link_to item.name, admin_item_path(item) %>
   <%= item.price.to_s(:delimited) %>
   <%= item.genre.name %>

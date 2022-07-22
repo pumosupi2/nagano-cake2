@@ -1,9 +1,9 @@
-<!--サイドバージャンル検索追加する-->
-
 <h1>商品一覧</h1>
-<h6>全●件</h6>
+全<%= @items.count %>件</br>
 <% @items.each do |item| %>
-  <%= image_tag item.image, size: "200x150" %>
+  <%= link_to item_path(item.id) do %>
+    <%= image_tag item.image, size: "200x150" %>
+  <% end %>
 <!--商品名-->
   <%= item.name %>
 <!--価格-->
