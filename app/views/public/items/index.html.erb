@@ -1,1 +1,11 @@
+<!--サイドバージャンル検索追加する-->
+
 <h1>商品一覧</h1>
+<h6>全●件</h6>
+<% @items.each do |item| %>
+  <%= image_tag item.image, size: "200x150" %>
+<!--商品名-->
+  <%= item.name %>
+<!--価格-->
+  ¥<%= item.price.to_s(:delimited) %>
+<% end %>
