@@ -1,23 +1,18 @@
 <h1>管理者側の商品一覧</h1>
-<h6>商品新規登録</h6>
-<table>
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-</table>
-<tbody>
-  <%= @items.each do |item| %>
-    <tr>
-      <td>
-        <%= item.name %>
-      </td>
-    </tr>
-    
-  <% end %>
-</tbody>
+<h4>商品一覧</h4>
+商品ID
+商品名
+税抜価格
+ジャンル
+ステータス</br>
+<% @items.each do |item| %>
+  <%= item.genre_id %>
+  <%= link_to item.name, admin_item_path(item) %>
+  <%= item.price.to_s(:delimited) %>
+  <%= item.genre.name %>
+  <% if item.is_active %>
+    販売中
+  <% else %>
+    販売停止中
+  <% end %></br>
+<% end %>
