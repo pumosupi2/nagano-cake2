@@ -1,5 +1,7 @@
+<%= render 'genre', genres: @genres %>
+
 <h1>商品詳細</h1>
-<%= image_tag @item.image, size: "400x300" %>
+<%= image_tag @item.get_image(400,300) %>
 <% if @item.is_active %>
   販売中
 <% else %>
