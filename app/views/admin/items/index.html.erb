@@ -1,23 +1,41 @@
-<h1>管理者側の商品一覧</h1>
-<h4>商品一覧</h4>
-<%= link_to new_admin_item_path do %>
-  <i class="fa-solid fa-circle-plus"></i>
-<% end %>
-</br>
-商品ID
-商品名
-税抜価格
-ジャンル
-ステータス</br>
-<% @items.each do |item| %>
-  <%= item.id %>
-  <%= link_to item.name, admin_item_path(item) %>
-  <%= item.price.to_s(:delimited) %>
-  <%= item.genre.name %>
-  <% if item.is_active %>
-    販売中
-  <% else %>
-    販売停止中
-  <% end %></br>
-<% end %>
-<%= paginate @items %>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col'>
+      <h2>管理者側の商品一覧</h2>
+    </div>
+    <div class='col'><h2>
+      <%= link_to new_admin_item_path do %>
+        <i class="fa-solid fa-circle-plus"></i>
+      <% end %></h2>
+    </div>
+  </div>
+  <table class='table table-hover table-inverse'>
+    <thead>
+      <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, admin_item_path(item) %></td>
+        <td><%= item.price.to_s(:delimited) %></td>
+        <td><%= item.genre.name %></td>
+        <td><% if item.is_active %>
+          販売中
+        <% else %>
+          販売停止中
+        <% end %></td>
+      </tr>
+      <% end %></br>
+    </tbody>
+  </table>
+  <tr>
+    <%= paginate @items %>
+  </tr>
+</div>
