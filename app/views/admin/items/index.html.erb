@@ -1,6 +1,9 @@
 <h1>管理者側の商品一覧</h1>
 <h4>商品一覧</h4>
-<%= link_to "＋", new_admin_item_path %></br>
+<%= link_to new_admin_item_path do %>
+  <i class="fa-solid fa-circle-plus"></i>
+<% end %>
+</br>
 商品ID
 商品名
 税抜価格
@@ -17,3 +20,4 @@
     販売停止中
   <% end %></br>
 <% end %>
+<%= paginate @items %>

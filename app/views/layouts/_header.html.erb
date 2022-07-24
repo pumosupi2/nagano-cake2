@@ -8,6 +8,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
+          ようこそ、<%= current_customer.last_name %>さん！
           <li>
             <%= link_to customers_my_page_path,class: 'nav-link text-light' do %>
             マイページ
@@ -84,6 +85,14 @@
             　ログイン
             <% end %>
           </li>
+          <% end %>
+        </ul>
+        <ul>
+          <%= form_with do |f| %>
+            <%= f.text_field :word %>
+            <%= button_tag type: :submit do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
           <% end %>
         </ul>
       </div>

@@ -1,4 +1,13 @@
 <h1>topページ</h1>
-<% flash.each do |message_type, message| %>
-　　<div class="alert alert-<%= message_type %>"><%= message %></div>
-<% end %>
+<div class='container'>
+  <div class='row'>
+    <div class='col'>
+      <%= render 'public/items/genre', genres: @genres %>
+    </div>
+    <div class='col'>
+      <% flash.each do |message_type, message| %>
+　　    <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
