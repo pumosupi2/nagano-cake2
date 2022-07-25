@@ -1,12 +1,12 @@
 <div class='container'>
+  <% flash.each do |message_type, message| %>
+　　<div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
   <div class='row'>
-      <% flash.each do |message_type, message| %>
-　　    <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
-      <div class='row'>
+    <div class='col-3 border border-primary'>
       <%= render 'public/items/genre', genres: @genres %>
     </div>
-    <div class='col'>
+    <div class='col-9'>
       <div class="top-page-image">
         <%= image_tag 'no_image.jpg', size: '800x400' %>
         <p>ようこそ、ながのCAKEへ！</br>
@@ -15,17 +15,15 @@
         購入には会員登録が必要になります。</p>
       </div>
       <h3>新規商品</h3>
-      <% @items.first(4).each do |item| %>
+      <% @items.last(4).each do |item| %>
         <%= link_to item_path(item.id) do %>
-          <%= image_tag item.get_image(400,300) %>
+          <%= image_tag item.get_image(200,100) %></br>
         <% end %>
-        <!--商品名-->
-        <%= item.name %>
-        <!--商品税込価格-->
-        <%= item.price.to_s(:delimited) %>
-      <% end %></br>
+        <%= item.name %></br>
+        ¥<%= ((item.price * 1.1).round(2)).ceil.to_s(:delimited) %></br>
+      <% end %>
       <%= link_to items_path do %>
-        全ての商品を見る ＞
+        <p>全ての商品を見る ＞</p>
       <% end %>
     </div>
   </div>
