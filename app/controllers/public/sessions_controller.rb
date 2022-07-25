@@ -4,6 +4,13 @@ class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :customer_state, only: [:create]
   
+   def after_sign_out_path_for(resource)
+     flash[:notice] = "ログアウトしました"
+     root_path
+   end
+  
+  
+  
   protected
   # 退会しているかを判断するメソッド
   def customer_state
@@ -12,13 +19,14 @@ class Public::SessionsController < Devise::SessionsController
   ## アカウントを取得できなかった場合、このメソッドを終了する
   return if !@customer
   ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-  if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
+   if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
     ## 【処理内容3】
-    flash[:error] = "退会済みです。"
+    flash[:notice] = "退会済みです。"
     redirect_to new_customer_registration_path
-  else
-    redirect_to customers_my_page_path(current_customer)
-  end
+   else
+    flash[:notice] = "ログインしました"
+    redirect_to root_path(current_customer)
+   end
   end
   # GET /resource/sign_in
   # def new
