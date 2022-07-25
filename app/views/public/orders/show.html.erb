@@ -50,9 +50,9 @@
   <% @order.order_histories.each do |order_history| %>
   <tr>
     <td><%= order_history.item.name %></td>
-    <td><%= order_history.price*1.1 %></td>
+    <td><%= ((order_history.price * 1.1).round(2)).ceil.to_s(:delimited) %></td>
     <td><%= order_history.amount %></td>
-    <td><%= order_history.price * 1.1 * order_history.amount %></td>
+    <td><%= ((order_history.price * 1.1).round(2)).ceil.to_s(:delimited) * order_history.amount %></td>
   </tr>
   <% end %>
 </table>

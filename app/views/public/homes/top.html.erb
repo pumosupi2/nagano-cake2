@@ -1,2 +1,32 @@
-<h1>topページ</h1>
-<%= notice %>
+
+<div class='container'>
+  <% flash.each do |message_type, message| %>
+　　<div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+  <div class='row'>
+    <div class='col-3 border border-primary'>
+      <%= render 'public/items/genre', genres: @genres %>
+    </div>
+    <div class='col-9'>
+      <div class="top-page-image">
+        <%= image_tag 'no_image.jpg', size: '800x400' %>
+        <p>ようこそ、ながのCAKEへ！</br>
+        このサイトは、ケーキ販売のECサイトになります。</br>
+        会員でない方も商品の閲覧はできますが、</br>
+        購入には会員登録が必要になります。</p>
+      </div>
+      <h3>新規商品</h3>
+      <% @items.last(4).each do |item| %>
+        <%= link_to item_path(item.id) do %>
+          <%= image_tag item.get_image(200,100) %></br>
+        <% end %>
+        <%= item.name %></br>
+        ¥<%= ((item.price * 1.1).round(2)).ceil.to_s(:delimited) %></br>
+      <% end %>
+      <%= link_to items_path do %>
+        <p>全ての商品を見る ＞</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
