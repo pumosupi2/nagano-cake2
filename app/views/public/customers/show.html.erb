@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <h2>登録情報</h2>
+    <h2>マイページ</h2>
   </div>
-  
+    <h4>登録情報</h4>
     <%= link_to "編集する",  customers_information_edit_path %>
     <div>
       <label>氏名</label>
@@ -29,10 +29,10 @@
       <div><%= @customer.email %></div>
     </div>
     <div>
-      <h2>配送先</h2>
-      <%= link_to "一覧を見る",  addresses_path %>
+      <h4>配送先</h4>
+      <%= link_to "一覧を見る", addresses_path %>
     </div>
     <div>
-      <h2>注文履歴</h2>
+      <h4>注文履歴</h4>
     </div>
 </div>
