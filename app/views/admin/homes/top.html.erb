@@ -7,12 +7,11 @@
     <th>購入者</th>
     <th>注文個数</th>
   </tr>
- <% @orders.each do |order| %>
+ <% @order.each do |f| %>
   <tr>
-    <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
-    
-    <td><%= order.customer.full_name %></td>
-    <!--<td> %= order.order_history.amount %></td>-->
+    <td><%= link_to f.created_at, admin_order_path(f.id) %></td>
+    <td><%= f.customer %></td>
+    <td><%= f.amount %></td>
   </tr>
   <% end %>
 </table>

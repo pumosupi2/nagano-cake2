@@ -1,8 +1,13 @@
 class Public::OrdersController < ApplicationController
-  
+
   def new
     @order = Order.new
     @customer = current_customer
+    @cart_items = current_customer.cart_items.all
+
+    if @cart_items.empty?
+		 redirect_to cart_items_path, notice: 'カートは空です。'
+    end
   end
 
   def confirm
@@ -11,9 +16,9 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.postal_code = current_customer.post_code
     @order.address = current_customer.address
-    @order.name = current_customer.first_name + current_customer.last_name
+    @order.save
   end
-  
+
   def create
     @cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
@@ -44,7 +49,7 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
   end
-  
+
   private
   def order_params
     params.require(:order).permit(:postal_code, :address, :name, :customer_id, :payment_method, :shipping_cost, :total_payment, :status)
