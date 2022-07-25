@@ -31,11 +31,10 @@
   </div>
   </tbody>
 </table>
-
 <table>
   <tr>
-    <th>送料</th>
-    <td><%= 800 %>円</td>
+   <th>送料</th>
+   <td><%= 800 %>円</td>
   </tr>
   <tr>
     <th>商品合計</th>
@@ -45,7 +44,6 @@
     <th>請求金額</th>
     <td><%= (800 + @goke).to_s(:delimited) %>円</td>
   </tr>
-  
 </table>
 
 <table style: "border:none;">
@@ -55,7 +53,7 @@
   </tr>
   <tr style: "border:none;">
     <th style: "border:none;">お届け先</th>
-    <td style: "border:none;">〒<%= @order.postal_code %> 
+    <td style: "border:none;">〒<%= @order.postal_code %>
     <%= @order.address %><br>
     <%= @order.name %>
     </td>

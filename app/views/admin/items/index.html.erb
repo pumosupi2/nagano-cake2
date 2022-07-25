@@ -5,7 +5,9 @@
     </div>
     <div class='col'><h2>
       <%= link_to new_admin_item_path do %>
-        <i class="fa-solid fa-circle-plus"></i>
+        <p class="p-item-index">
+        <i class="fa-solid fa-circle-plus btn-light"></i>
+        </p>
       <% end %></h2>
     </div>
   </div>
@@ -35,7 +37,5 @@
       <% end %></br>
     </tbody>
   </table>
-  <tr>
-    <%= paginate @items %>
-  </tr>
+  <%= paginate @items %>
 </div>
