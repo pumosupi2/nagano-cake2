@@ -8,14 +8,12 @@
   <!--ジャンル登録-->
   <div class="form-group">
   
-    <%= form_with model: @genre,local:true do |f| %>
+    <%= form_with model: @genre, local:true do |f| %>
 
-      <td>ジャンル名</td>
-      <td><%= f.text_field :name, class: 'form-control genre_name' %></td>
-      <td><%= f.submit "新規登録",class: "btn btn-success" %></td>
+      ジャンル名
+      <%= f.text_field :name, class: 'form-control genre_name' %>
+      <%= f.submit "新規登録",class: "btn btn-success" %>
       <% end %>
-    </tr>
-   
 
   <br>
   <br>
