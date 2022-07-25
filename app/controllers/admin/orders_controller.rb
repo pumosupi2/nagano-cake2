@@ -1,11 +1,8 @@
 class Admin::OrdersController < ApplicationController
   before_action :set_order, only: [:show, :update]
-
   
-  def show
-    
-  end
-
+  
+  
   def update
     if @order.update(order_params)
       redirect_to admin_order_path(@order)

@@ -9,30 +9,29 @@
   </tr>
   <% @cart_items.each do |cart| %>
   <tr>
-    <td><画像挿入><%= cart.item.name %></td>
-    <td><%= ((cart.item.price * 1.1).round(2)).ceil.to_s(:delimited) %></td>
-    <td><%= cart.amount %></td>
-    <td><%= ((cart.item.price * 1.1).round(2)).ceil.to_s(:delimited) * cart.amount %></td>
-    <% @goke = ((cart.item.price *1.1).round(2)).ceil.to_s(:delimited) * cart.amount + @goke %>
+  <td><画像挿入><%= cart.item.name %></td>
+  <td><%= ((cart.item.with_tax_price).round(2)).ceil.to_s(:delimited) %></td>
+  <td><%= cart.amount %></td>
+  <td><%= ((cart.subtotal).round(2)).ceil.to_s(:delimited) %></td>
+  <% @goke += cart.subtotal %>
   </tr>
   <% end %>
-</table>
-
-<table>
+  </table>
+  <table>
   <tr>
-    <th>送料</th>
-    <td><%= 800 %>円</td>
+   <th>送料</th>
+   <td><%= 800 %>円</td>
   </tr>
   <tr>
-    <th>商品合計</th>
-    <td><%= @goke %>円</td>
+   <th>商品合計</th>
+   <td><%= @goke %>円</td>
   </tr>
   <tr>
-    <th>請求金額</th>
-    <td><%= 800 + @goke %>円</td>
+   <th>請求金額</th>
+   <td><%= 800 + @goke %>円</td>
   </tr>
   
-</table>
+ </table>
 
 <table style: "border:none;">
   <tr style: "border:none;">
