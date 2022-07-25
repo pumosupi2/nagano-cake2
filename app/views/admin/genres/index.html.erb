@@ -11,14 +11,12 @@
    <tbody>
     <%= form_with model: @genre,local:true, url: admin_genres_path, method: :post do |f| %>
 
-      <td>ジャンル名</td>
-      <td><%= f.text_field :name, class: 'form-control genre_name' %></td>
-      <td><%= f.submit "新規登録",class: "btn btn-success" %></td>
-      <% end %>
-    </tr>
-   </tbody>
-  </table>
 
+      ジャンル名
+      <%= f.text_field :name, class: 'form-control genre_name' %>
+      <%= f.submit "新規登録",class: "btn btn-success" %>
+      <% end %>
+  
   <br>
   <br>
   <!--ジャンル一覧-->
