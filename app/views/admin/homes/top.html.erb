@@ -1,1 +1,18 @@
 <h1>管理者トップページ(注文履歴一覧)</h1>
+
+<h2>注文履歴一覧</h2>
+<table>
+  <tr>
+    <th>購入日時</th>
+    <th>購入者</th>
+    <th>注文個数</th>
+  </tr>
+ <% @orders.each do |order| %>
+  <tr>
+    <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
+    
+    <td><%= order.customer.full_name %></td>
+    <!--<td> %= order.order_history.amount %></td>-->
+  </tr>
+  <% end %>
+</table>
