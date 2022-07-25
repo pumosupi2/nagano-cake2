@@ -7,7 +7,7 @@
   <%= f.text_field :name, placeholder: "商品名" %></br>
   商品説明
   <%= f.text_area :introduction, rows: '5', placeholder: "ここに説明文を記述します" %></br>
-  ジャンル選択
+  ジャンル
   <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: 'ジャンル選択' }, class: 'form-control' %><br>
   税抜価格
   <%= f.text_field :price, placeholder: "1000" %>円</br>

@@ -1,8 +1,22 @@
-<h1>商品詳細</h1>
-<%= image_tag @item.image, size: "400x300" %>
-<!--商品名-->
-<%= @item.name %></br>
-<!--商品説明-->
-<%= @item.introduction %></br>
-<!--価格-->
-¥<%= @item.price %>(税込)</br>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-2'>
+      <%= render 'genre', genres: @genres %>
+    </div>
+    <div class='col'>
+      <h1>商品詳細</h1>
+      <%= image_tag @item.get_image(400,300) %></br>
+      <% if @item.is_active %>
+        販売中
+      <% else %>
+        売切れ
+      <% end %></br>
+      <!--商品名-->
+      <%= @item.name %></br>
+      <!--商品説明-->
+      <%= @item.introduction %></br>
+      <!--価格-->
+      ¥<%= ((@item.price * 1.1).round(2)).ceil.to_s(:delimited) %>(税込)</br>
+    </div>
+  </div>
+</div>
