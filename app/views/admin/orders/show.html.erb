@@ -11,7 +11,7 @@
     
     <tr style:"border:none;">
       <th style:"border:none;">注文日</th>
-      <td style:"border:none;"><%= @order.created_at %></td>
+      <td style:"border:none;"><%= @order.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
     </tr>
     
     <tr style:"border:none;">

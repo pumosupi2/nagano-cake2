@@ -9,9 +9,13 @@
   </tr>
  <% @order.each do |f| %>
   <tr>
-    <td><%= link_to f.created_at, admin_order_path(f.id) %></td>
-    <td><%= f.customer %></td>
-    <td><%= f.amount %></td>
+
+    <td><%= link_to order.created_at.strftime("%Y-%m-%d %H:%M:%S"), admin_order_path(order.id) %></td>
+    
+    <td><%= order.customer.full_name %></td>
+    <td><%= order.total_amount %></td>
+
   </tr>
   <% end %>
 </table>
+<%= paginate @orders %>

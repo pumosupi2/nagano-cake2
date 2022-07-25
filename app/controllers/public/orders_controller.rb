@@ -14,11 +14,24 @@ class Public::OrdersController < ApplicationController
     @goke = 0
     @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
+    
+   if params[:order][:address_number] == "1"
     @order.postal_code = current_customer.post_code
     @order.address = current_customer.address
-    @order.save
-  end
 
+    @order.name = current_customer.full_name
+    
+   elsif params[:order][:address_number] == "2"
+     address = Address.find(params[:order][:delivery_address_id]) #2でとってきたアドレス探してきた　オーダーテーブルの中のdelivery_address_idを指定してる
+     @order.postal_code = address.delivery_post_code
+     @order.address = address.delivery_address
+     @order.name = address.delivery_address_name
+     
+   else 
+     
+   end
+  end
+     
   def create
     @cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)

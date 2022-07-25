@@ -11,7 +11,9 @@ class Order < ApplicationRecord
     finish_prepare: 4,
   }
   
-  
+  def total_amount
+    order_histories.inject(0){ |total, order_history| total + order_history.amount }
+  end
   
   def full_name
     self.last_name + " " + self.first_name

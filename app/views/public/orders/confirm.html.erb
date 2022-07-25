@@ -1,21 +1,35 @@
+<div class='container px-5 px-sm-0'>
+ <div class='row'>
+  <!--左-->
 
+<div class='col-md-12'>
 <h2>注文情報確認</h2>
 <table>
+  <thead>
   <tr>
+    <th></th>
     <th>商品名</th>
     <th>単価(税込)</th>
     <th>数量</th>
     <th>小計</th>
   </tr>
+  </thead>
+  <tbody>
   <% @cart_items.each do |cart| %>
   <tr>
-    <td><画像挿入><%= cart.item.name %></td>
-    <td><%= ((cart.item.with_tax_price).round(2)).ceil.to_s(:delimited) %></td>
+    <td><%= image_tag cart.item.image, size: "50x50" %></td>
+    <td><%= cart.item.name %></td>
+    <td><%= ((cart.item.with_tax_price).round(2)).ceil.to_s(:delimited) %>円</td>
+    <!--<td>%= ((cart.item.price * 1.1).round(2)).ceil.to_s(:delimited) %></td>-->
     <td><%= cart.amount %></td>
-    <td><%= ((cart.subtotal).round(2)).ceil.to_s(:delimited) %></td>
+    <!--<td>%= ((cart.item.price * 1.1).round(2)).ceil.to_s(:delimited) * cart.amount %></td>-->
+    <td><%= ((cart.subtotal).round(2)).ceil.to_s(:delimited) %>円</td>
     <% @goke += cart.subtotal %>
+    <!--% @goke = ((cart.item.price *1.1).round(2)).ceil.to_s(:delimited) * cart.amount + @goke %>-->
   </tr>
   <% end %>
+  </div>
+  </tbody>
 </table>
 <table>
   <tr>
@@ -23,12 +37,12 @@
    <td><%= 800 %>円</td>
   </tr>
   <tr>
-   <th>商品合計</th>
-   <td><%= @goke %>円</td>
+    <th>商品合計</th>
+    <td><%= @goke.to_s(:delimited) %>円</td>
   </tr>
   <tr>
     <th>請求金額</th>
-    <td><%= 800 + @goke %>円</td>
+    <td><%= (800 + @goke).to_s(:delimited) %>円</td>
   </tr>
 </table>
 
@@ -41,6 +55,7 @@
     <th style: "border:none;">お届け先</th>
     <td style: "border:none;">〒<%= @order.postal_code %>
     <%= @order.address %><br>
+    <%= @order.name %>
     </td>
   </tr>
 </table>
@@ -55,3 +70,5 @@
   <%= f.hidden_field :name,:value => @order.name %>
     <%= f.submit "注文を確定する", class:"btn btn-sm btn-success" %>
   <% end %>
+  </div>
+</div>
