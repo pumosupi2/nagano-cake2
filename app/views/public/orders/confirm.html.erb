@@ -10,10 +10,10 @@
   <% @cart_items.each do |cart| %>
   <tr>
     <td><画像挿入><%= cart.item.name %></td>
-    <td><%= ((cart.item.price * 1.1).round(2)).ceil.to_s(:delimited) %></td>
+    <td><%= ((cart.item.with_tax_price).round(2)).ceil.to_s(:delimited) %></td>
     <td><%= cart.amount %></td>
-    <td><%= ((cart.item.price * 1.1).round(2)).ceil.to_s(:delimited) * cart.amount %></td>
-    <% @goke = ((cart.item.price *1.1).round(2)).ceil.to_s(:delimited) * cart.amount + @goke %>
+    <td><%= ((cart.subtotal).round(2)).ceil.to_s(:delimited) %></td>
+    <% @goke += cart.subtotal %>
   </tr>
   <% end %>
 </table>
@@ -31,7 +31,7 @@
     <th>請求金額</th>
     <td><%= 800 + @goke %>円</td>
   </tr>
-  
+
 </table>
 
 <table style: "border:none;">
@@ -41,7 +41,7 @@
   </tr>
   <tr style: "border:none;">
     <th style: "border:none;">お届け先</th>
-    <td style: "border:none;">〒<%= @order.postal_code %> 
+    <td style: "border:none;">〒<%= @order.postal_code %>
     <%= @order.address %><br>
     </td>
   </tr>
@@ -57,4 +57,3 @@
   <%= f.hidden_field :name,:value => @order.name %>
     <%= f.submit "注文を確定する", class:"btn btn-sm btn-success" %>
   <% end %>
-  
