@@ -1,42 +1,28 @@
-<h1>商品詳細</h1>
-<%= image_tag @item.image, size: "400x300" %>
-<!--商品名-->
-<%= @item.name %></br>
-<!--商品説明-->
-<%= @item.introduction %></br>
-<!--価格-->
-¥<%= @item.price %>(税込)</br>
-
-<!--個数選択（カート機能）-->
-<br>
-<p>数量を入力してください</p>
-<%= form_with model: @cart_item, url: cart_items_path, method: :post do |item| %>
-<%= item.select :amount, *[1..10] %>
-
-<%= item.hidden_field :customer_id, :value => current_customer.id %>
-<%= item.hidden_field :item_id, :value => @item.id %>
-<!--ボタン-->
-<%= item.submit "カート",class: "btn btn-primary" %>
-<% end %>
 <div class='container'>
   <div class='row'>
-    <div class='col-md-2'>
+    <div class='col-2'>
       <%= render 'genre', genres: @genres %>
     </div>
     <div class='col'>
-      <h1>商品詳細</h1>
       <%= image_tag @item.get_image(400,300) %></br>
+    </div>
+    <div class='col'>
+      <h3 class="item-name"><%= @item.name %></h3>
+      <h5 class="item-introduction"><%= @item.introduction %></h5></br>
+      <h5 class="item-price">¥<%= ((@item.price * 1.1).round(2)).ceil.to_s(:delimited) %>(税込)</h5></br>
       <% if @item.is_active %>
         販売中
+        <p>数量を入力してください</p>
+        <%= form_with model: @cart_item, url: cart_items_path, method: :post do |item| %>
+        <%= item.select :amount, *[1..10] %>
+        <%= item.hidden_field :customer_id, :value => current_customer.id %>
+        <%= item.hidden_field :item_id, :value => @item.id %>
+        <!--ボタン-->
+        <%= item.submit "カート",class: "btn btn-primary" %>
+        <% end %>
       <% else %>
         売切れ
-      <% end %></br>
-      <!--商品名-->
-      <%= @item.name %></br>
-      <!--商品説明-->
-      <%= @item.introduction %></br>
-      <!--価格-->
-      ¥<%= ((@item.price * 1.1).round(2)).ceil.to_s(:delimited) %>(税込)</br>
+      <% end %>
     </div>
   </div>
 </div>
