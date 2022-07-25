@@ -1,59 +1,73 @@
 <div class="container">
   <div class="row">
-    <h2>新規会員登録画面</h2>
-  </div>
+    <div class="col-10 max auto">
+    <h2 class="mb-2">新規会員登録画面</h2>
+    <%= notice %>
 
-<% flash.each do |message_type, message| %>
-　　<div class="alert alert-<%= message_type %>"><%= message %></div>
-<% end %>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
- <%= render "public/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
 　
 
-   <div class="row ml-3">
-        <label class="col-lg-3">名前</label>
-        <div class="col-lg-3">
-          (姓)<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" , placeholder: "山田" %>
-        </div>
-        <div class="col-lg-3">
-          (名)<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" , placeholder: "太郎"%>
-        </div>
-   </div><br />
-   <div class="row ml-3">
-        <label class="col-lg-3">フリガナ</label>
-        <div class="col-lg-3">
-          (セイ)<%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" , placeholder: "ヤマダ" %>
-        </div>
-        <div class="col-lg-3">
-          (メイ)<%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" , placeholder: "タロウ"%>
-        </div>
-   </div><br />
-　 <div class="row ml-3">
+   <div class="form-group row">
+     <div class="col-2">
+       <%= f.label "氏名" %>
+     </div>
+     <div class="col-1 text-right">
+       <p>(姓)</p>
+     </div>
+     <div class="col-3">
+       <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" , placeholder: "山田" %>
+     </div>
+     <div class="col-1 text-right">
+       <p>(名)</p>
+     </div>
+     <div class="col-3">
+       <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" , placeholder: "太郎"%>
+     </div>
+   </div>   
+     
+   <div class="form-group row">
+     <div class="col-2">
+       <%= f.label "フリガナ" %>
+     </div>
+     <div class="col-1 text-right text">
+       <p>(セイ)</p>
+     </div>
+     <div class="col-3">
+       <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" , placeholder: "ヤマダ" %>
+     </div>
+     <div class="col-1 text-right text">
+       <p>(メイ)</p>
+     </div>
+     <div class="col-3">
+       <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" , placeholder: "タロウ"%>
+     </div>
+   </div>
+    <div class="form-group row">
         <label class="col-lg-3">メールアドレス</label>
         <div class="col-lg-3">
           <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: "sample@sample.com"%>
         </div>
     </div><br />
-    <div class="row ml-3">
+    <div class="form-group row">
         <label class="col-lg-3">郵便番号(ハイフンなし)</label>
         <div class="col-lg-3">
           <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code", placeholder: "0000000" %>
         </div>
     </div><br />
-    <div class="row ml-3">
+    <div class="form-group row">
         <label class="col-lg-3">住所</label>
         <div class="col-lg-3">
           <%= f.text_field :address, autofocus: true, autocomplete: "address" , placeholder: "東京都渋谷区代々木神園町0-0" %>
         </div>
     </div><br />
-    <div class="row ml-3">
+    <div class="form-group row">
         <label class="col-lg-3">電話番号(ハイフンなし)</label>
         <div class="col-lg-3">
           <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" , placeholder: "00000000000" %>
         </div>
     </div><br />
-    <div class="row ml-3">
+    <div class="form-group row">
         <label class="col-lg-3">パスワード
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %>文字以上)</em>
@@ -62,15 +76,15 @@
           <%= f.password_field :password, autocomplete: "encrypted_password" %>
         </div>
     </div><br />
-    <div class="row ml-3">
+    <div class="form-group row">
         <label class="col-lg-3">パスワード(確認用)</label>
       <div class="col-lg-3">
         <%= f.password_field :password_confirmation, autocomplete: "encrypted_password" %>
       </div>
     </div><br />
-    <div class="row ml-3">
-     <div class="actions col-lg-3">
-        <%= f.submit "新規登録" %>
+    <div class="form-group row">
+     <div class="col-3">
+        <%= f.submit "新規登録" , class: "btn btn-success w-100" %>
      </div>
     </div>
 
@@ -81,5 +95,7 @@
 
   <div class = "row">
     <%= link_to "こちら", new_session_path(resource_name) %>からログインしてください。
+  </div>
+   </div>
   </div>
 </div>
