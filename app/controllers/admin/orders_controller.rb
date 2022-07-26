@@ -4,11 +4,13 @@ class Admin::OrdersController < ApplicationController
   
   
   def update
-    if @order.update(order_params)
-      redirect_to admin_order_path(@order)
+    @order.update(order_params)
+    if @order.status == "confirm_payment"
+     @order.order_histories.update(making_status: "waiting_manufacture")
+     redirect_to admin_order_path(@order)
     else
-      render :show
-    end
+     redirect_to admin_order_path(@order)
+    end 
   end
   
   

@@ -6,10 +6,15 @@ class Admin::OrderHistoriesController < ApplicationController
   
   def update
     @order_history = OrderHistory.find(params[:id])
-    if @order_history.update(order_history_params)
+    @order_history.update(order_history_params)
+    if @order_history.making_status == "manufacturing"
+      @order_history.order.update(status: "making")
+      redirect_to admin_order_path(@order_history.order)
+    elsif @order_history.making_status == "finish"
+      @order_history.order.update(status: "preparing_ship")
       redirect_to admin_order_path(@order_history.order)
     else
-      render :show
+      redirect_to admin_order_path(@order_history.order)
     end
   end
   
