@@ -2,7 +2,7 @@ class Public::AddressesController < ApplicationController
 
   def index
     @address = Address.new
-    @addresses = current_customer.addresses.all
+    @addresses = Address.all
     @address.customer_id = current_customer.id
   end
 
@@ -12,7 +12,7 @@ class Public::AddressesController < ApplicationController
     if @address.save
       redirect_to addresses_path
     else
-      @addresses = current_customer.addresses.all
+      @addresses = Address.all
       render :index
     end
   end
