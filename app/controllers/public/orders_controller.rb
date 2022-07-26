@@ -4,7 +4,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @customer = current_customer
     @cart_items = current_customer.cart_items.all
-
     if @cart_items.empty?
 		 redirect_to cart_items_path, notice: 'カートは空です。'
     end
@@ -31,7 +30,6 @@ class Public::OrdersController < ApplicationController
 
    end
   end
-
   def create
     @cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
@@ -56,7 +54,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders.all
   end
 
   def show
