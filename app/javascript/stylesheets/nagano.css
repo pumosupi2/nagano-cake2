@@ -34,3 +34,7 @@
 .p-item-index {
   text-align: right;
 }
+.warp {
+  display: flex;
+  flex-flow: wrap;
+}
