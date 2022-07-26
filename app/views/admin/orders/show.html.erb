@@ -50,7 +50,7 @@
       <td><%= order_history.item.name %></td>
       <td><%= ((order_history.item.price * 1.1).round(2)).ceil.to_s(:delimited) %>円</td>
       <td><%= order_history.amount %>個</td>
-      <td><%= ((order_history.price * 1.1).round(2)).ceil.to_s(:delimited) * order_history.amount %>円</td>
+      <td><%= ((order_history.price * 1.1 * order_history.amount ).round(2)).ceil.to_s(:delimited) %>円</td>
     　<td>
     　   <%= form_with model: order_history, url: admin_order_order_history_path(@order.id, order_history.id), method: :PATCH, local: true do |f| %>
         <%= f.select :making_status, OrderHistory.making_statuses_i18n.invert %>
