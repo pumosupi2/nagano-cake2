@@ -1,4 +1,4 @@
-<div class='container'>
+<div class='container mt-5'>
   <div class='row'>
     <div class='col-2'>
       <%= render 'genre', genres: @genres %>
@@ -14,7 +14,9 @@
         販売中
         <p>数量を入力してください</p>
         <%= form_with model: @cart_item, url: cart_items_path, method: :post do |item| %>
-        <%= item.select :amount, *[1..10] %>
+        
+          <%= item.select :amount, *[1..10] %>
+        
         <%= item.hidden_field :customer_id, :value => current_customer.id %>
         <%= item.hidden_field :item_id, :value => @item.id %>
         <!--ボタン-->

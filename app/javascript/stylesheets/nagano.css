@@ -12,10 +12,7 @@
   margin:0;
   padding:0;
 }
-.piimage {
-  height: 200px;
-  width: 200px;
-}
+
 .sidb {
   font-weight: 800;
 }
@@ -27,14 +24,13 @@
   font-size: 20px;
   border-bottom: 3px solid orange;
 }
-.public-index {
-  display: flex;
-  flex-flow: wrap;
-}
 .p-item-index {
   text-align: right;
 }
-.warp {
+.item-warp {
   display: flex;
-  flex-flow: wrap;
+  flex-wrap: wrap;
+}
+.warp {
+  margin-right: 20px;
 }
