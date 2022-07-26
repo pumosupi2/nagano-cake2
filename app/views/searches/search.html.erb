@@ -1,25 +1,23 @@
 <div class='container'>
   <div class='row'>
     <div class='col-md-2'>
-      <%= render 'genre', genres: @genres %>
+      <%= render 'public/items/genre', genres: @genres %>
     </div>
     <div class='col'>
-    <h1>商品一覧</h1>
+    <h1>検索結果一覧</h1>
     <h3>全<%= @items_all.count %>件</h3></br>
       <div class='table table-hover table-inverse'>
         <div class="public-index">
           <% @items.each do |item| %>
           <div class="warp">
-            <div class="piimage">
-              <%= link_to item_path(item.id) do %>
-                <%= image_tag item.get_image(200,100) %></br>
-              <% end %>
-            </div></br>
-              <% if item.is_active %>
-                販売中</br>
-              <% else %>
-                売切れ</br>
-              <% end %>
+            <div class="piimage"><%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_image(200,100) %></br>
+            <% end %>
+            <% if item.is_active %>
+              販売中</br>
+            <% else %>
+              売切れ</br>
+            <% end %>
             <div class="sidb"><%= item.name %></div></br>
             <div class="sidb">¥<%= item.price.to_s(:delimited) %></div></br>
           </div>
@@ -28,5 +26,4 @@
     </div>
   </div>
 </div>
-<%= paginate @items %>
-
+<%= paginate @item_page %>
