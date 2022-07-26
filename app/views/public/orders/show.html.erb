@@ -7,7 +7,7 @@
   </tr>
   <tr>
     <td>注文日</td>
-    <td><%= @order.created_at %></td>
+    <td><%= @order.created_at.strftime("%Y-%m-%d") %></td>
   </tr>
   <tr>
     <td>配送先</td>
@@ -15,7 +15,11 @@
   </tr>
   <tr>
     <td>支払い方法</td>
-    <td><%= @order.payment_method %></td>
+    <td><%= @order.payment_method_i18n %></td>
+  </tr>
+  <tr>
+    <td>ステータス</td>
+    <td><%= @order.status_i18n %></td>
   </tr>
 </table>
 
@@ -25,15 +29,15 @@
   </tr>
   <tr>
     <th>商品合計</th>
-    <td><%= @order.total_payment %></td>
+    <td><%= @order.total_payment.to_s(:delimited) %>円</td>
   </tr>
   <tr>
     <th>配送料</th>
-    <td><%= 800 %></td>
+    <td><%= 800 %>円</td>
   </tr>
   <tr>
     <th>ご請求額</th>
-    <td><%= @order.total_payment + 800 %></td>
+    <td><%= (@order.total_payment + 800).to_s(:delimited) %>円</td>
   </tr>
 </table>
 
@@ -50,9 +54,9 @@
   <% @order.order_histories.each do |order_history| %>
   <tr>
     <td><%= order_history.item.name %></td>
-    <td><%= ((order_history.price * 1.1).round(2)).ceil.to_s(:delimited) %></td>
-    <td><%= order_history.amount %></td>
-    <td><%= ((order_history.price * 1.1).round(2)).ceil.to_s(:delimited) * order_history.amount %></td>
+    <td><%= ((order_history.price * 1.1).round(2)).ceil.to_s(:delimited) %>円</td>
+    <td><%= order_history.amount %>個</td>
+    <td><%= ((order_history.price * 1.1* order_history.amount).round(2)).ceil.to_s(:delimited) %>円</td>
   </tr>
   <% end %>
 </table>
