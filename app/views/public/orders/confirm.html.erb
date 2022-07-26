@@ -1,13 +1,10 @@
 <div class='container px-5 px-sm-0'>
+  <h4>注文情報確認</h4><br>
  <div class='row'>
-  <!--左-->
-
-<div class='col-md-12'>
-<h2>注文情報確認</h2>
-<table>
-  <thead>
+   <div class='col-md-8'>
+<table class="table table-bordered" >
+  <thead class="table-light">
   <tr>
-    <th></th>
     <th>商品名</th>
     <th>単価(税込)</th>
     <th>数量</th>
@@ -17,8 +14,8 @@
   <tbody>
   <% @cart_items.each do |cart| %>
   <tr>
-    <td><%= image_tag cart.item.image, size: "50x50" %></td>
-    <td><%= cart.item.name %></td>
+    <td><%= image_tag cart.item.image, size: "50x50" %>
+    <%= cart.item.name %></td>
     <td><%= ((cart.item.with_tax_price).round(2)).ceil.to_s(:delimited) %>円</td>
     <!--<td>%= ((cart.item.price * 1.1).round(2)).ceil.to_s(:delimited) %></td>-->
     <td><%= cart.amount %></td>
@@ -28,37 +25,43 @@
     <!--% @goke = ((cart.item.price *1.1).round(2)).ceil.to_s(:delimited) * cart.amount + @goke %>-->
   </tr>
   <% end %>
-  </div>
   </tbody>
 </table>
-<table>
-  <tr>
-   <th>送料</th>
+</div>
+<div class='col-md-4'>
+<table class="table table-bordered">
+   <th class="table-light">送料</th>
    <td><%= 800 %>円</td>
   </tr>
   <tr>
-    <th>商品合計</th>
+    <th class="table-light">商品合計</th>
     <td><%= @goke.to_s(:delimited) %>円</td>
   </tr>
   <tr>
-    <th>請求金額</th>
+    <th class="table-light">請求金額</th>
     <td><%= (800 + @goke).to_s(:delimited) %>円</td>
   </tr>
 </table>
+</div>
+</div>
 
+<div class='row'>
+  <div class='col-12'>
 <table style: "border:none;">
   <tr style: "border:none;">
-    <th style: "border:none;">支払い方法</th>
+    <th style: "border:none;"><b>支払い方法</b></th>
     <td style: "border:none;"><%= @order.payment_method_i18n %></td>
   </tr>
-  <tr style: "border:none;">
-    <th style: "border:none;">お届け先</th>
+  <tr style: "border:none;"><br>
+    <th style: "border:none;"><b>お届け先</b></th>
     <td style: "border:none;">〒<%= @order.postal_code %>
     <%= @order.address %><br>
     <%= @order.name %>
     </td>
   </tr>
 </table>
+  </div>
+</div>
 
   <%= form_with model: @order, url: orders_path, local: true do |f| %>
   <%= f.hidden_field :customer_id,:value => current_customer.id %>
@@ -70,5 +73,4 @@
   <%= f.hidden_field :name,:value => @order.name %>
     <%= f.submit "注文を確定する", class:"btn btn-sm btn-success" %>
   <% end %>
-  </div>
 </div>

@@ -1,20 +1,23 @@
-<h1>注文履歴画面</h1>
 <div class="container">
-  <div class="row">
-<h3>注文履歴一覧</h3>
-<table>
+  <h4>注文履歴一覧</h4>
+  <div class="row justify-content-center">
+<table class="table table-bordered">
+  <thead>
   <tr>
-    <th>注文日</th>
-    <th>配送先</th>
-    <th>注文商品</th>
-    <th>支払い金額</th>
-    <th>ステータス</th>
-    <th>注文詳細</th>
+    <th class="table-light">注文日</th>
+    <th class="table-light">配送先</th>
+    <th class="table-light">注文商品</th>
+    <th class="table-light">支払い金額</th>
+    <th class="table-light">ステータス</th>
+    <th class="table-light">注文詳細</th>
   </tr>
+  </thead>
   <% @orders.each do |order| %>
+  <tbody>
   <tr>
     <td><%= order.created_at.strftime("%Y-%m-%d") %></td>
-    <td><%= order.address %></td>
+    <td>〒<%= order.postal_code %><%= order.address %><br>
+    <%= order.name %></td>
     <td><% order.order_histories.each do |order_history| %>
       <%= order_history.item.name %><br>
     <% end %>
@@ -23,7 +26,9 @@
     <td><%= order.status_i18n %></td>
     <td><%= link_to "表示する", order_path(order.id), class:"btn btn-sm btn-primary"  %></td>
   </tr>
+  </tbody>
   <% end %>
 </table>
+<%= paginate @orders %>
   </div>
 </div>
