@@ -27,12 +27,12 @@
               <% if @item.is_active %>
                 <td class="text-success font-weight-bold">販売中</td></br>
               <% else %>
-                <td class="text-danger font-weight-bold">販売停止中</td>
+                <td class="text-danger font-weight-bold">販売停止中</td></br>
               <% end %>
           </tr>
         </table>
           <div class="row justify-content-center">
-            <%= link_to '編集する', edit_admin_item_path, class: "btn btn-outline-info" %>
+            <%= link_to '編集する', edit_admin_item_path, class: "btn btn-outline-success" %>
           </div>
       </div>
   </div>
