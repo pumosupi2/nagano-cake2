@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mb-5">
      <div class="col-10 max auto">
-       <h2 class="mb-2">ログイン</h2>
+       <h2 class="mt-3">ログイン</h2>
        <h4 class="mt-5 mb-4">会員の方はこちらからログイン</h4>
        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -21,7 +21,7 @@
 
        <div class="form-group row">
          <div class="offset-4 col-2 text">
-          <%= f.submit "ログイン",class: "btn btn-sm btn-primary" %>
+          <%= f.submit "ログイン",class: "btn btn-sm btn-info" %>
          </div>
        </div>
        <% end %>
