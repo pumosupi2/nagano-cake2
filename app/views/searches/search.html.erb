@@ -4,19 +4,19 @@
       <%= render 'public/items/genre', genres: @genres %>
     </div>
     <div class='col-10'>
-      <h1>検索結果一覧</h1>
+      <h1>検索結果一覧</h1></br>
       <div class="item-warp">
         <% @items.each do |item| %>
         <div class="warp">
           <%= link_to item_path(item.id) do %>
             <%= image_tag item.get_image(200,200) %></br>
-          <% end %>
+          <% end %><br>
+          <p class="sidb"><%= item.name %></p>
           <% if item.is_active %>
-            <p>販売中</p>
+            <p class="text-success font-weight-bold">販売中</p>
           <% else %>
-            <p>売切れ</p>
+            <p class="text-danger font-weight-bold">売切れ</p>
           <% end %>
-          <div class="sidb"><%= item.name %></div></br>
           <div class="sidb">¥<%= item.price.to_s(:delimited) %></div></br>
         </div>
         <% end %>

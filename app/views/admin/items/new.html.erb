@@ -1,27 +1,32 @@
-<div class='container px-5 px-sm-0'>
+<div class='container mt-5'>
   <div class='row'>
-    <div class='col-md-6'>
-      <h3>商品新規登録</h3>
+    <div class='col'>
+      <h3>商品新規登録</h3></br>
         <div class="form-group">
-          <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
-            商品画像
-            <%= f.file_field :image, accept: 'image/*' %></br>
-            商品名
-            <%= f.text_field :name, placeholder: "商品名" %></br>
-            商品説明
-            <%= f.text_area :introduction, rows: '5', placeholder: "ここに説明文を記述します" %></br>
-            ジャンル
-            <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: 'ジャンル選択' }, class: 'form-control' %><br>
-            税抜価格
-            <%= f.text_field :price, placeholder: "1000" %>円</br>
-            販売ステータス
-            <%= f.radio_button :is_active, :true %>
-            <%= f.label :is_active, "販売中", value: :true %>
-            <%= f.radio_button :is_active, :false %>
-            <%= f.label :is_active, "販売停止中", value: :false %></br>
-            <%= f.submit '新規登録', class: "btn btn-warning" %>
-          <% end %>
+          <div class="row justify-content-center">
+            <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+              商品画像
+              <%= f.file_field :image, accept: 'image/*' %></br>
+              商品名
+              <%= f.text_field :name, placeholder: "商品名" %></br>
+              商品説明
+              <%= f.text_area :introduction, rows: '5', placeholder: "ここに説明文を記述します" %></br>
+              ジャンル
+              <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: 'ジャンル選択' }, class: 'form-control' %><br>
+              税抜価格
+              <%= f.text_field :price, placeholder: "1000" %>円</br>
+              販売ステータス
+              <%= f.radio_button :is_active, :true %>
+              <%= f.label :is_active, "販売中", value: :true %>
+              <%= f.radio_button :is_active, :false %>
+              <%= f.label :is_active, "販売停止中", value: :false %></br>
+              <div class="row justify-content-center">
+                <%= f.submit '新規登録', class: "btn btn-outline-info" %>
+              </div>
+            <% end %>
+          </div>
         </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<div class='container'>
+<div class='container mt-5'>
   <% flash.each do |message_type, message| %>
 　　<div class="alert alert-<%= message_type %>"><%= message %></div>
   <% end %>
@@ -9,12 +9,12 @@
     <div class='col-10'>
       <div class="top-page-image">
         <%= image_tag 'no_image.jpg', size: '800x400' %>
-        <p>ようこそ、ながのCAKEへ！</br>
+        <p class="font-weight-bold">ようこそ、ながのCAKEへ！</br>
         このサイトは、ケーキ販売のECサイトになります。</br>
         会員でない方も商品の閲覧はできますが、</br>
         購入には会員登録が必要になります。</p>
       </div>
-        <div class='row'>
+        <div class='row-mt-4 pt-3'>
         <h3>新規商品</h3>
         </div>
         <div class='row'>
@@ -22,13 +22,13 @@
           <div class='col'>
             <%= link_to item_path(item.id) do %>
               <%= image_tag item.get_image(200,100) %></br>
-            <% end %>
-            <%= item.name %></br>
-            ¥<%= ((item.price * 1.1).round(2)).ceil.to_s(:delimited) %></br>
+            <% end %></br>
+            <p class="font-weight-bold"><%= item.name %></p>
+            <p class="font-weight-bold">¥<%= ((item.price * 1.1).round(2)).ceil.to_s(:delimited) %></p></br>
           </div>
           <% end %>
         </div>
-      <%= link_to items_path do %>
+      <%= link_to items_path, class: "text-dark" do %>
         <p class="p-item-index">全ての商品を見る ＞</p>
       <% end %>
     </div>

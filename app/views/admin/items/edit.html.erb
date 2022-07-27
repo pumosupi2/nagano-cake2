@@ -1,20 +1,30 @@
-<h1>商品編集</h1>
-
-<%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
-  商品画像
-  <%= f.file_field :image, accept: 'image/*' %></br>
-  商品名
-  <%= f.text_field :name %></br>
-  商品説明
-  <%= f.text_area :introduction %></br>
-  ジャンル
-  <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: 'ジャンル選択' }, class: 'form-control' %><br>
-  税抜価格
-  <%= f.text_field :price %>円</br>
-  販売ステータス
-  <%= f.radio_button :is_active, :true %>
-  <%= f.label :is_active, "販売中", value: :true %>
-  <%= f.radio_button :is_active, :false %>
-  <%= f.label :is_active, "販売停止中", value: :false %></br>
-  <%= f.submit '変更を保存', class: "btn btn-warning" %>
-<% end %>
+<div class='container mt-5'>
+  <div class='row'>
+    <div class='col'>
+      <h3>商品編集</h3></br>
+        <div class="form-group">
+          <div class="row justify-content-center">
+            <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
+              商品画像
+              <%= f.file_field :image, accept: 'image/*' %></br>
+              商品名
+              <%= f.text_field :name %></br>
+              商品説明
+              <%= f.text_area :introduction %></br>
+              ジャンル
+              <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: 'ジャンル選択' }, class: 'form-control' %><br>
+              税抜価格
+              <%= f.text_field :price %>円</br>
+              販売ステータス
+              <%= f.radio_button :is_active, :true %>
+              <%= f.label :is_active, "販売中", value: :true %>
+              <%= f.radio_button :is_active, :false %>
+              <%= f.label :is_active, "販売停止中", value: :false %></br>
+              <div class="row justify-content-center">
+                <%= f.submit '変更を保存', class: "btn btn-outline-info" %>
+              </div>
+            <% end %>
+          </div>
+    </div>
+  </div>
+</div>
