@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
-    <h2 class="mt-3">新規会員登録画面</h2>
+    <h1>新規会員登録画面</h1>
     <div class="col-10 max auto">
     <%= notice %>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -83,7 +83,7 @@
     </div><br />
     <div class="form-group row justify-content-center">
      <div class="col-3">
-        <%= f.submit "新規登録" , class: "btn btn-success w-100" %>
+        <%= f.submit "新規登録" , class: "btn btn-outline-success w-100" %>
      </div>
     </div>
 
