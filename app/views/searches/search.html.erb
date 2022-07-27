@@ -1,29 +1,30 @@
-<div class='container'>
+<div class='container mt-5'>
   <div class='row'>
     <div class='col-md-2'>
       <%= render 'public/items/genre', genres: @genres %>
     </div>
-    <div class='col'>
-    <h1>検索結果一覧</h1>
-    <h3>全<%= @items_all.count %>件</h3></br>
-      <div class='table table-hover table-inverse'>
-        <div class="public-index">
-          <% @items.each do |item| %>
-          <div class="warp">
-            <div class="piimage"><%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_image(200,100) %></br>
-            <% end %>
-            <% if item.is_active %>
-              販売中</br>
-            <% else %>
-              売切れ</br>
-            <% end %>
-            <div class="sidb"><%= item.name %></div></br>
-            <div class="sidb">¥<%= item.price.to_s(:delimited) %></div></br>
-          </div>
+    <div class='col-10'>
+      <h1>検索結果一覧</h1></br>
+      <div class="item-warp">
+        <% @items.each do |item| %>
+        <div class="warp">
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_image(200,200) %></br>
+          <% end %><br>
+          <p class="sidb"><%= item.name %></p>
+          <% if item.is_active %>
+            <p class="text-success font-weight-bold">販売中</p>
+          <% else %>
+            <p class="text-danger font-weight-bold">売切れ</p>
           <% end %>
+          <div class="sidb">¥<%= item.price.to_s(:delimited) %></div></br>
         </div>
+        <% end %>
+      </div>
     </div>
   </div>
+  <div class="row justify-content-center">
+    <%= paginate @item_page %>
+  </div>
 </div>
-<%= paginate @item_page %>
+

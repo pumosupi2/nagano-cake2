@@ -1,7 +1,7 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <div class="container">
-      <a class="navbar-brand" href="/"><span>LOGO挿入</span></a>
+      <a class="navbar-brand" href="/"><span>NAGANO <i class="fa-solid fa-cake-candles"></i> CAKE</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -15,29 +15,18 @@
             <% end %>
           </li>
           <li>
-            <%=  link_to items_path,class: 'nav-link text-light' do %>
+            <%= link_to items_path,class: 'nav-link text-light' do %>
               商品一覧
             <% end %>
           </li>
           <li>
-            <%=  link_to cart_items_path,class: 'nav-link text-light' do %>
-            　カート
+            <%= link_to cart_items_path,class: 'nav-link text-light' do %>
+              カート
             <% end %>
           </li>
           <li>
             <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
-            　ログアウト
-            <% end %>
-          </li>
-          <!--以下★マーク部分は機能実装後削除してください-->
-          <li>
-            <%= link_to new_admin_item_path,class: 'nav-link text-light' do %>
-            　★商品追加★
-            <% end %>
-          </li>
-          <li>
-            <%= link_to admin_genres_path,class: 'nav-link text-light' do %>
-            　★ジャンル一覧・追加★
+              ログアウト
             <% end %>
           </li>
           <% elsif admin_signed_in? %>
@@ -48,20 +37,22 @@
           </li>
           <li>
             <%= link_to admin_customers_path,class: 'nav-link text-light' do %>
-            　会員一覧
+              会員一覧
             <% end %>
           </li>
           <li>
-            
+            <%= link_to admin_path,class: 'nav-link text-light' do %>
+              注文履歴一覧
+            <% end %>
           </li>
           <li>
             <%= link_to admin_genres_path,class: 'nav-link text-light' do %>
-            ジャンル一覧
+              ジャンル一覧
             <% end %>
           </li>
           <li>
             <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
-            　ログアウト
+              ログアウト
             <% end %>
           </li>
           <% else %>
@@ -71,7 +62,7 @@
             <% end %>
           </li>
           <li>
-            <%=  link_to items_path,class: 'nav-link text-light' do %>
+            <%= link_to items_path,class: 'nav-link text-light' do %>
               商品一覧
             <% end %>
           </li>
@@ -87,22 +78,13 @@
           </li>
           <% end %>
         </ul>
-        <ul>
-          
-        </ul>
-        <%= form_with url: search_path, local: true, method: :get do |s| %>
-          <%= s.text_field :word %>
-          <%= button_tag type: :submit do %>
-            <i class="fa-solid fa-magnifying-glass"></i>
+          <%= form_with url: search_path, local: true, method: :get do |s| %>
+            <%= s.text_field :word %>
+            <%= button_tag type: :submit do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
           <% end %>
-        <% end %>
       </div>
     </div>
   </nav>
-  <div class="container">
-    <div class="row">
-      <div class='mx-auto'>
-  　  </div>
-  　</div>
-  </div>
 </header>

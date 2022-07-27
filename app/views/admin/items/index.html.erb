@@ -1,12 +1,12 @@
-<div class='container px-5 px-sm-0'>
+<div class='container mt-5 px-5 px-sm-0'>
   <div class='row'>
     <div class='col'>
-      <h2>管理者側の商品一覧</h2>
+      <h2>商品一覧</h2>
     </div>
     <div class='col'><h2>
       <%= link_to new_admin_item_path do %>
         <p class="p-item-index">
-        <i class="fa-solid fa-circle-plus btn-light"></i>
+        <i class="fa-solid fa-circle-plus btn-light text-info"></i>
         </p>
       <% end %></h2>
     </div>
@@ -18,24 +18,26 @@
         <th>商品名</th>
         <th>税抜価格</th>
         <th>ジャンル</th>
-        <th>ステータス</th>
+        <th class="text-center">ステータス</th>
       </tr>
     </thead>
     <tbody>
       <% @items.each do |item| %>
       <tr>
         <td><%= item.id %></td>
-        <td><%= link_to item.name, admin_item_path(item) %></td>
+        <td><%= link_to item.name, admin_item_path(item) , class: "text-dark" %></td>
         <td><%= item.price.to_s(:delimited) %></td>
         <td><%= item.genre.name %></td>
-        <td><% if item.is_active %>
-          販売中
+        <% if item.is_active %>
+          <td class="text-center text-success font-weight-bold">販売中</td>
         <% else %>
-          販売停止中
-        <% end %></td>
+          <td class="text-center text-danger font-weight-bold">販売停止中</td>
+        <% end %>
       </tr>
       <% end %></br>
     </tbody>
   </table>
+  <div class="row justify-content-center">
   <%= paginate @items %>
+  </div>
 </div>

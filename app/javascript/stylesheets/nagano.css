@@ -3,7 +3,7 @@
 }
 .top-page-image p {
   position: absolute;
-  color: orange;
+  color: #17a2b8;
   top: 50%;
   left: 50%;
   -ms-transform: translate(-50%,-50%);
@@ -12,29 +12,28 @@
   margin:0;
   padding:0;
 }
-.piimage {
-  height: 200px;
-  width: 200px;
-}
+
 .sidb {
   font-weight: 800;
 }
 .jsb {
-  border: 3px solid orange;
+  border: 3px solid #17a2b8;
+}
+.jn {
+  text-align: center
 }
 .js {
   font-weight: 800;
   font-size: 20px;
-  border-bottom: 3px solid orange;
-}
-.public-index {
-  display: flex;
-  flex-flow: wrap;
+  border-bottom: 3px solid;
 }
 .p-item-index {
   text-align: right;
 }
-.warp {
+.item-warp {
   display: flex;
-  flex-flow: wrap;
+  flex-wrap: wrap;
+}
+.warp {
+  margin-right: 20px;
 }

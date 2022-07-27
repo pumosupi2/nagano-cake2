@@ -1,29 +1,40 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <h3>管理者側の商品詳細</h3>
+<div class='container mt-5'>
+  <h3>管理者側の商品詳細</h3></br>
     <div class='row'>
-      <div class='col'>
+      <div class='col-pl-2'>
         <%= image_tag @item.get_image(400,300) %></br>
       </div>
       <div class='col'>
-        商品名
-        <%= @item.name %></br>
-        商品説明
-        <%= @item.introduction %></br>
-        ジャンル
-        <%= @item.genre.name %></br>
-        税込価格</br>
-        （税抜価格）
-        <%= ((@item.price * 1.1).round(2)).ceil.to_s(:delimited) %>
-        (<%= @item.price.to_s(:delimited) %>)円</br>
-        販売ステータス
-        <% if @item.is_active %>
-          販売中
-        <% else %>
-          販売停止中
-        <% end %></br>
-        <%= link_to '編集する', edit_admin_item_path, class: "btn btn-warning" %>
+        <table style:"border:none;">
+          <tr style:"border:none;">
+            <th style:"border:none:none;">　商品名</th>
+            <td style:"border:none:none;"><%= @item.name %></th>
+          </tr>
+          <tr style:"border:none;">
+            <th style:"border:none:none;">　商品説明</th>
+            <td style:"border:none:none;"><%= @item.introduction %></th>
+          </tr>
+          <tr style:"border:none;">
+            <th style:"border:none:none;">　ジャンル</th>
+            <td style:"border:none:none;"><%= @item.genre.name %></th>
+          </tr>
+          <tr style:"border:none;">
+            <th style:"border:none:none;">　税込価格</br>（税抜価格）</th>
+            <td style:"border:none:none;"><%= ((@item.price * 1.1).round(2)).ceil.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円</th>
+          </tr>
+          <tr style:"border:none;">
+            <th style="height: 50% width: 50%">　販売ステータス</th></br>
+            <td style:"border:none:none;">
+              <% if @item.is_active %>
+                <p class="text-success font-weight-bold">販売中</p></br>
+              <% else %>
+                <p class="text-danger font-weight-bold">販売停止中</p>
+              <% end %>
+          </tr>
+        </table>
+          <div class="row justify-content-center">
+            <%= link_to '編集する', edit_admin_item_path, class: "btn btn-outline-info" %>
+          </div>
       </div>
-    </div>
   </div>
 </div>
