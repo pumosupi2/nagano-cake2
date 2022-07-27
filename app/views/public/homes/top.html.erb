@@ -1,6 +1,6 @@
 <div class='container'>
   <% flash.each do |message_type, message| %>
-  <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
   <% end %>
   <div class='row mt-5'>
     <div class='col-2'>
@@ -8,7 +8,7 @@
     </div>
     <div class='col-10'>
       <div class="top-page-image">
-        <div class="top-i">
+        <div class="top-image">
           <%= image_tag 'strawberry-tart-g67dfc35b9_1280', size: '850x400' %>
         </div>
         <p class="font-weight-bold">ようこそ、ながのCAKEへ！</br>

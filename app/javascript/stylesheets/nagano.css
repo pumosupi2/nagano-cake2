@@ -1,8 +1,9 @@
 .top-page-image {
   position: relative;
 }
-.top-i {
+.top-image {
   opacity: 0.8;
+  filter: brightness(70%);
 }
 .top-page-image p {
   position: absolute;
@@ -39,4 +40,7 @@
 }
 .warp {
   margin-right: 20px;
+}
+.font-c {
+  color: #FFFFFF
 }
