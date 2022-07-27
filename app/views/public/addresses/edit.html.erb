@@ -1,25 +1,25 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-6'>
-      <!--左-->
-      <h4>配送先編集画面</h4>
-      <br>
-      <br>
-        <div class="form-group">
-        <p>配送先</p>
-        <%= form_with model: @address,local:true, url: address_path, method: :patch do |f| %>
-        <p>郵便番号</p>
-        <%= f.text_field :delivery_post_code, class: 'form-control address_delivery_post_code' %>
-        <p>住所</p>
-        <%= f.text_field :delivery_address, class: 'form-control address_delivery_address' %>
-    　　<p>宛名</p>
-        <%= f.text_field :delivery_address_name, class: 'form-control address_delivery_address_name' %>
-        <%= f.submit "変更を保存",class: "btn btn-success" %>
-        <% end %>
-        </div>
-    </div>
-    <!--右（空白）-->
-    <div class='col-md-5 offset-md-1'>
-    </div>
+    <div class='col-md-5'>
+    <h4>配送先</h4>
+<%= form_with model: @address,local:true, url: address_path, method: :patch do |f| %>
+<table>
+  <tbody>
+    <tr>
+      <td><%= f.label :delivery_post_code, "郵便番号" %></td>
+      <td><%= f.text_field :delivery_post_code ,rows: '50'%></td>
+    </tr>
+    <tr>
+      <td><%= f.label :delivery_address, "住所" %></td>
+      <td><%= f.text_field :delivery_address ,rows: '200' %></td>
+    <tr>
+      <td><%= f.label :delivery_address_name, "宛名" %></td>
+      <td><%= f.text_field :delivery_address_name, rows: '50', placeholder: "令和道子" %></td>
+      <td><%= f.submit "変更を保存",class: "btn btn-success" %></td>
+    </tr>
+  </tbody>
+</table>
+ <% end %>
+ </div>
   </div>
 </div>

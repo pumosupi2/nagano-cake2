@@ -1,53 +1,63 @@
 <div class='container px-5 px-sm-0'>
- <div class='row'>
-  <!--左-->
-  <div class='col-md-6'>
+  <div class='row'>
+  <div class='col-md-9'>
   <h4>配送先登録/一覧</h4>
   <br>
-  <br>
-
-  <div class="form-group">
   <%= form_with model: @address, url: addresses_path, local:true, method: :post  do |f| %>
-
-    <p>郵便番号</p>
-    <%= f.text_field :delivery_post_code, class: 'form-control address_delivery_post_code' %>
-    <p>住所</p>
-    <%= f.text_field :delivery_address, class: 'form-control address_delivery_address' %>
-    <p>宛名</p>
-    <%= f.text_field :delivery_address_name, class: 'form-control address_delivery_address_name' %>
-    <br>
-    <%= f.submit "新規登録",class: "btn btn-success" %>
-　<% end %>
+  <table>
+     <tbody>
+       <tr>
+         <td style="border:none;"><%= f.label :delivery_post_code, "郵便番号" %></td>
+         <td style="border:none;"><%= f.text_field :delivery_post_code , placeholder: "0000000" %></td>
+         <td style="border:none;"></td>
+       </tr>
+       <tr>
+         <td style="border:none;"><%= f.label :delivery_address, "住所" %></td>
+         <td style="border:none; width: 50%"><%= f.text_field :delivery_address ,rows: '200', placeholder: "東京都渋谷区代々木" %></td>
+         <td style="border:none;"></td>
+       </tr>
+       <tr>
+         <td style="border:none;"><%= f.label :delivery_address_name, "宛名" %></td>
+         <td style="border:none;"><%= f.text_field :delivery_address_name, placeholder: "令和道子" %></td>
+         <td style="border:none;" align="center"><%= f.submit "新規登録",class: "btn btn-sm btn-success" %></td>
+       </tr>
+     </tbody>
+   </table>
+   <% end %>
+  </div>
+  <div class='col-md-3'>
+  </div>
+  </div>
   <br>
   <br>
 
-  <table class='table table-hover table-inverse'>
+  <div class='row'>
+
+  <div class='col-md-6'>
+  <table class='table'>
     <thead>
       <tr>
-      <th>郵便番号</th>
-      <th>住所</th>
-      <th>宛名</th>
-      <th colspan="5"></th>
+        <th width=100>郵便番号</th>
+        <th width=200>住所</th>
+        <th width=200>宛名</th>
+        <th colspan="5"></th>
       </tr>
     </thead>
-    <tbody>
-
-    <% @addresses.each do |address| %>
-    <tr>
-      <td><%= address.delivery_post_code %></td>
-      <td><%= address.delivery_address %></td>
-      <td><%= address.delivery_address_name %></td>
-      <td><%= link_to '編集',edit_address_path(address.id), class: "btn btn-sm btn-success" %></td>
-      <td><%= link_to '削除',address_path(address.id), method: :delete,class: "btn btn-sm btn-danger" %></td>
-    </tr>
-    <% end %>
-
-    </tbody>
+  <% @addresses.each do |address| %>
+  <tbody>
+      <tr>
+        <td><%= address.delivery_post_code %></td>
+        <td><%= address.delivery_address %></td>
+        <td><%= address.delivery_address_name %></td>
+        <td width=100><%= link_to '編集',edit_address_path(address.id), class: "btn btn-sm btn-success" %></td>
+        <td width=100><%= link_to '削除',address_path(address.id), method: :delete,class: "btn btn-sm btn-danger" %></td>
+      </tr>
+   </tbody>
+  <% end %>
   </table>
   </div>
+  <div class='col-md-6'>
   </div>
-  <!--右（空白）-->
-  <div class='col-md-5 offset-md-1'>
+
   </div>
- </div>
 </div>
