@@ -1,4 +1,6 @@
 class CartItem < ApplicationRecord
+  
+  REGISTER_LIMIT_COUNT = 10
   belongs_to :customer
   belongs_to :item
 
@@ -8,4 +10,5 @@ class CartItem < ApplicationRecord
   def subtotal
     item.with_tax_price * amount
   end
+
 end
