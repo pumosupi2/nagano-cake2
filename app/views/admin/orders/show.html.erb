@@ -42,20 +42,20 @@
       <thead>
       <tr>
         <th class="table-light">商品名</th>
-        <th class="table-light">単価（税込）</th>
-        <th class="table-light">数量</th>
-        <th class="table-light">小計</th>
+        <th class="table-light" style="width: 17%">単価（税込）</th>
+        <th class="table-light" style="width: 10%">数量</th>
+        <th class="table-light" style="width: 10%">小計</th>
         <th class="table-light">製作ステータス</th>
       </tr>
       </thead>
       <tbody>
         <% @order.order_histories.each do |order_history| %>
           <tr>
-            <td><%= order_history.item.name %></td>
-            <td><%= ((order_history.item.price * 1.1).round(2)).ceil.to_s(:delimited) %>円</td>
-            <td><%= order_history.amount %>個</td>
-            <td><%= ((order_history.price * 1.1 * order_history.amount).round(2)).ceil.to_s(:delimited) %>円</td>
-      　     <td>
+            <td class="align-middle"><%= order_history.item.name %></td>
+            <td class="align-middle"><%= ((order_history.item.price * 1.1).round(2)).ceil.to_s(:delimited) %>円</td>
+            <td class="align-middle"><%= order_history.amount %>個</td>
+            <td class="align-middle"><%= ((order_history.price * 1.1 * order_history.amount).round(2)).ceil.to_s(:delimited) %>円</td>
+            <td class="align-middle">
       　     <%= form_with model: order_history, url: admin_order_order_history_path(@order.id, order_history.id), method: :PATCH, local: true do |f| %>
               <%= f.select :making_status, OrderHistory.making_statuses_i18n.invert %>
               <%= f.submit "更新", class: "btn btn-outline-success" %>
@@ -68,7 +68,7 @@
     </div>
     
     <div class="col-3 d-flex align-items-end">
-      <table style="border:none;">
+      <table style="border:none;" class="ml-4">
         <tr style="border:none;">
           <th style="border:none;">商品合計</th>
           <td style="border:none;"><%= @order.total_payment.round(2).ceil.to_s(:delimited) %>円</td>

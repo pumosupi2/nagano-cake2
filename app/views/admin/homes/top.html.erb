@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>注文履歴一覧</h2>
+  <h4>注文履歴一覧</h4>
   <div class="row justify-content-center">
     <table class="table">
       <tr>
@@ -9,7 +9,7 @@
       </tr>
      <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to order.created_at.strftime("%Y-%m-%d %H:%M:%S"), admin_order_path(order.id), class:"link" %></td>
+        <td><%= link_to order.created_at.strftime("%Y-%m-%d %H:%M:%S"), admin_order_path(order.id), class: "text-dark text-decoration-none" %></td>
         <td><%= order.customer.full_name %></td>
         <td><%= order.total_amount %></td>
       </tr>
