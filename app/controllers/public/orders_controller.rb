@@ -13,21 +13,21 @@ class Public::OrdersController < ApplicationController
     @goke = 0
     @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
-    
+
    if params[:order][:address_number] == "1"
     @order.postal_code = current_customer.post_code
     @order.address = current_customer.address
 
     @order.name = current_customer.full_name
-    
+
    elsif params[:order][:address_number] == "2"
      address = Address.find(params[:order][:delivery_address_id]) #2でとってきたアドレス探してきた　オーダーテーブルの中のdelivery_address_idを指定してる
      @order.postal_code = address.delivery_post_code
      @order.address = address.delivery_address
      @order.name = address.delivery_address_name
-     
-   else 
-     
+
+   else
+
    end
   end
 
@@ -56,7 +56,7 @@ class Public::OrdersController < ApplicationController
 
   def index
 
-　　@orders = Order.page(params[:page])
+  @orders = Order.page(params[:page])
 
   end
 
