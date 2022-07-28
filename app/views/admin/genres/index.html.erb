@@ -1,0 +1,48 @@
+<div class='container mt-5'>
+  <div class='row'>
+   <h2>ジャンル一覧・追加</h2>
+  </div>
+
+  <%= form_with model: @genre,local:true, url: admin_genres_path, method: :post do |f| %>
+  <br>
+  <div class="form-group row">
+  <div class="col-2">
+
+     <%= f.label "ジャンル名" %>
+  </div>
+  <div class="col-3">
+     <%= f.text_field :name ,class: 'form-control genre_name'%>
+ </div>
+  <div class="col-2">
+     <%= f.submit "新規登録",class: "btn btn-outline-success" %>
+   </div>
+
+  <% end %>
+  <div class="col-5">
+  </div>
+</div>
+  <br>
+  <br>
+  <br>
+<div class='row'>
+<div class='col-6'>
+<table class='table'>
+  <thead>
+    <tr>
+      <th width=500>ジャンル</th>
+      <th width=200></th>
+    </tr>
+  </thead>
+ <% @genres.each do |genre| %>
+  <tbody>
+    <tr>
+      <td><%= genre.name %></td>
+      <td><%= link_to '編集',edit_admin_genre_path(genre.id), class: "btn btn-sm btn-outline-success"%></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+</div>
+</div>
+
+</div>

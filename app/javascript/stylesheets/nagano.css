@@ -1,0 +1,46 @@
+.top-page-image {
+  position: relative;
+}
+.top-image {
+  opacity: 0.8;
+  filter: brightness(70%);
+}
+.top-page-image p {
+  position: absolute;
+  color: #FFFFFF;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+}
+
+.sidb {
+  font-weight: 800;
+}
+.jsb {
+  border: 3px solid #17a2b8;
+}
+.jn {
+  text-align: center
+}
+.js {
+  font-weight: 800;
+  font-size: 20px;
+  border-bottom: 3px solid;
+}
+.p-item-index {
+  text-align: right;
+}
+.item-warp {
+  display: flex;
+  flex-wrap: wrap;
+}
+.warp {
+  margin-right: 20px;
+}
+.font-c {
+  color: #FFFFFF
+}

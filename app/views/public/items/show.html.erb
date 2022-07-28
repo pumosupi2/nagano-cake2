@@ -1,0 +1,33 @@
+<div class='container mt-5'>
+  <div class='row'>
+    <div class='col-2'>
+      <%= render 'genre', genres: @genres %>
+    </div>
+    <div class='col'>
+      <%= image_tag @item.get_image(400,300) %></br>
+    </div>
+    <div class='col'>
+      <h3 class="item-name font-weight-bold"><%= @item.name %></h3></br>
+      <h5 class="item-introduction"><%= @item.introduction %></h5></br>
+      <h4 class="item-price">¥<%= ((@item.price * 1.1).round(2)).ceil.to_s(:delimited) %>(税込)</h4></br>
+      <% if @item.is_active %>
+
+        <p class="text-success font-weight-bold">販売中</p>
+         <% if customer_signed_in? %>
+          <p>数量を入力してください</p>
+            <%= form_with model: @cart_item, url: cart_items_path, method: :post do |item| %>
+            <%= item.select :amount, *[1..10] %>
+            <%= item.hidden_field :customer_id, :value => current_customer.id %>
+            <%= item.hidden_field :item_id, :value => @item.id %>
+            <!--ボタン-->
+            <%= item.submit "カート",class: "btn btn-info" %>
+            <% end %>
+        <% else %>
+        <p>お買い物をする場合は会員登録/ログインをお願いします</p>
+        <% end %>
+      <% else %>
+        <p class="text-danger font-weight-bold">売切れ</p>
+      <% end %>
+    </div>
+  </div>
+</div>

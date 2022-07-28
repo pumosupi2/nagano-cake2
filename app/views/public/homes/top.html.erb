@@ -1,0 +1,39 @@
+<div class='container'>
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+  <div class='row mt-5'>
+    <div class='col-2'>
+      <%= render 'public/items/genre', genres: @genres %>
+    </div>
+    <div class='col-10'>
+      <div class="top-page-image">
+        <div class="top-image">
+          <%= image_tag 'strawberry-tart-g67dfc35b9_1280', size: '850x400' %>
+        </div>
+        <p class="font-weight-bold">ようこそ、ながのCAKEへ！</br>
+        このサイトは、ケーキ販売のECサイトになります。</br>
+        会員でない方も商品の閲覧はできますが、</br>
+        購入には会員登録が必要になります。</p>
+      </div>
+        <div class='row-mt-4 pt-3'>
+        <h3>新規商品</h3>
+        </div>
+        <div class='row'>
+          <% @items.last(4).each do |item| %>
+          <div class='col'>
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_image(200,100) %></br>
+            <% end %></br>
+            <p class="font-weight-bold"><%= item.name %></p>
+            <p class="font-weight-bold">¥<%= ((item.price * 1.1).round(2)).ceil.to_s(:delimited) %></p></br>
+          </div>
+          <% end %>
+        </div>
+      <%= link_to items_path, class: "text-dark" do %>
+        <p class="p-item-index">全ての商品を見る ＞</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,98 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <div class="container">
+      <% if customer_signed_in? %>
+        <a class="navbar-brand" href="/"><span>NAGANO <i class="fa-solid fa-cake-candles"></i> CAKE</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <% else %>
+        <a class="navbar-brand"><span>NAGANO <i class="fa-solid fa-cake-candles"></i> CAKE</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <% end %>
+      
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if customer_signed_in? %>
+          <p class="font-c m-2">ようこそ、<%= current_customer.last_name %>さん！</p>
+          <li>
+            <%= link_to customers_my_page_path,class: 'nav-link text-light' do %>
+            マイページ
+            <% end %>
+          </li>
+          <li>
+            <%= link_to items_path,class: 'nav-link text-light' do %>
+              商品一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to cart_items_path,class: 'nav-link text-light' do %>
+              カート
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
+              ログアウト
+            <% end %>
+          </li>
+          <% elsif admin_signed_in? %>
+          <li>
+            <%= link_to admin_items_path,class: 'nav-link text-light' do %>
+            　商品一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_customers_path,class: 'nav-link text-light' do %>
+              会員一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_path,class: 'nav-link text-light' do %>
+              注文履歴一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_genres_path,class: 'nav-link text-light' do %>
+              ジャンル一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
+              ログアウト
+            <% end %>
+          </li>
+          <% else %>
+          <li>
+            <%= link_to about_path,class: 'nav-link text-light' do %>
+              About
+            <% end %>
+          </li>
+          <li>
+            <%= link_to items_path,class: 'nav-link text-light' do %>
+              商品一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
+            　新規登録
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_customer_session_path ,class: 'nav-link text-light' do %>
+            　ログイン
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+          <%= form_with url: search_path, local: true, method: :get do |s| %>
+            <%= s.text_field :word %>
+            <%= button_tag type: :submit do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+  </nav>
+</header>
