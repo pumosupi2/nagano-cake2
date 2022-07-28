@@ -87,7 +87,8 @@
           <% end %>
         </ul>
           <%= form_with url: search_path, local: true, method: :get do |s| %>
-            <%= s.text_field :word %>
+            <%= s.text_field :word, autocomplete: "off"  %>
+            <!--autocomplete: "off"検索履歴の表示を非表示にする-->
             <%= button_tag type: :submit do %>
               <i class="fa-solid fa-magnifying-glass"></i>
             <% end %>
