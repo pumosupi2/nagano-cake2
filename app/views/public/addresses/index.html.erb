@@ -31,7 +31,7 @@
        <%= f.text_field :delivery_address_name, placeholder: "令和道子" %>
      </div>
      <div class="col-3">
-       <%= f.submit "新規登録",class: "btn btn-sm btn-success" %>
+       <%= f.submit "新規登録",class: "btn btn-sm btn-outline-success" %>
      </div>
    </div>
    <% end %>
@@ -56,8 +56,8 @@
         <td><%= address.delivery_post_code %></td>
         <td><%= address.delivery_address %></td>
         <td><%= address.delivery_address_name %></td>
-        <td width=100><%= link_to '編集',edit_address_path(address.id), class: "btn btn-sm btn-success" %></td>
-        <td width=100><%= link_to '削除',address_path(address.id), method: :delete,class: "btn btn-sm btn-danger" %></td>
+        <td width=100><%= link_to '編集',edit_address_path(address.id), class: "btn btn-sm btn-outline-success" %></td>
+        <td width=100><%= link_to '削除',address_path(address.id), method: :delete,class: "btn btn-sm btn-outline-danger" %></td>
       </tr>
    </tbody>
   <% end %>
