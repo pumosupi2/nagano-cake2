@@ -10,11 +10,11 @@
   <!--ジャンル登録-->
   <div class="form-group">
    <%= form_with model: @genre,local:true, url: admin_genres_path, method: :post do |f| %>
-   <div class="col-2">
+   <div class="col-7">
      <%= f.label "ジャンル名" %>
    </div>
    <div class="col-1 text-right">
-     <%= f.text_field :name, autofocus: true, %>
+     <%= f.text_field :name, autofocus: true %>
    </div>
    <div class="col-1">
      <%= f.submit "新規登録",class: "btn btn-success" %>
@@ -43,7 +43,6 @@
 
     </tbody>
   </table>
-  </div>
   </div>
   <!--右（空白）-->
   <div class='col-md-5 offset-md-1'>
