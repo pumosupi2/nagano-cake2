@@ -35,6 +35,8 @@ class Public::CartItemsController < ApplicationController
     end
     end
    @cart_item.save
+   puts "ああああああああああああああああああああああああああああああああああ"
+   puts @cart_item
    redirect_to cart_items_path
   end
 
